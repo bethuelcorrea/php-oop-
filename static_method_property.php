@@ -19,7 +19,7 @@ class Cars{
 }
 
 $ford = new Cars();
-//public method
+//public property
 echo $ford->model.' ';
 
 // access a static property
