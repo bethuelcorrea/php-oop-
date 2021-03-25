@@ -1,23 +1,33 @@
 <?php
+$db_host = "localhost";
+$db_name = "xxxxxxx";
+$db_user = "xxxxx";
+$db_pass = "xxxxxxx";
 
-$articles = [
-    [
-        "title"   => "First post",
-        "content" => "This is the first of many posts!"
-    ],
-    [
-        "title"   => "Another post",
-        "content" => "Yet another fascinating post..."
-    ],
-    [
-        "title"   => "Read this!",
-        "content" => "You must read this now, it's essential reading!"
-    ],
-    [
-        "title"   => "The latest news",
-        "content" => "Here's the latest news, read it now"
-    ]
-];
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+
+if(mysqli_connect_error()){
+    echo mysqli_connect_error();
+    exit;
+}
+
+$sql = "SELECT * 
+        FROM `article` 
+        ORDER BY `published_at`;";
+ //$sql = "SELECT * FROM `article`";
+
+
+  $results = mysqli_query($conn, $sql);  
+ 
+ 
+ if ($results === false){
+    echo mysqli_error($conn);
+   
+ }else{
+    $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);   
+   
+ } 
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
