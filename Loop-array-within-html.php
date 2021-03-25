@@ -31,29 +31,36 @@ $sql = "SELECT *
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-<header>
-    <h1>My blog</h1>
-</header>
+    <header>
+        <h1>My blog</h1>
+    </header>
 
-<main>
-    <ul>
-    <?php foreach ($articles as $article): ?>
-        <article>
-            <h2><?= $article['title']; ?></h2>
-            <p><?= $article['content']; ?></p>
-        </article>
-    <?php endforeach; ?>    
-    </ul>
-</main>
+    <main>
+        <?php if(empty($articles)): ?>
+        <p>No articles found.</p>
+        <?php else: ?>
+        <ul>
+            <?php foreach ($articles as $article): ?>
+            <article>
+                <h2><?= $article['title']; ?></h2>
+                <p><?= $article['content']; ?></p>
+            </article>
+            <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
+    </main>
 
 
-    
+
 </body>
+
 </html>
