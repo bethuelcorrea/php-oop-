@@ -50,10 +50,12 @@ $sql = "SELECT *
         <?php else: ?>
         <ul>
             <?php foreach ($articles as $article): ?>
-            <article>
+            <li>
+            <article>                
                 <h2><?= $article['title']; ?></h2>
                 <p><?= $article['content']; ?></p>
             </article>
+            </li>    
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
